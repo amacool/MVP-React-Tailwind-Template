@@ -3,6 +3,7 @@ import CustomTimePicker from "./components/CustomTimePicker";
 import CustomButton from "./components/CustomButton";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
+import CustomSwitch from "./components/CustomSwitch";
 import "./App.css";
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
         </div>
         <div className="mb-5 flex justify-between items-end">
           <CustomSlider defaultValue={30} />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomSwitch />
+          <CustomSwitch label="Switch with label" />
         </div>
       </div>
       <div className="ml-6 pt-1 col-span-1">
