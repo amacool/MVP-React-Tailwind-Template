@@ -3,7 +3,12 @@ import CustomTimePicker from "./components/CustomTimePicker";
 import CustomButton from "./components/CustomButton";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
+import SimpleList from "./components/SimpleList";
+import NestedList from "./components/NestedList";
+import FolderList from "./components/FolderList";
 import "./App.css";
+
+import { listData } from './dataInfo';
 
 function App() {
   return (
@@ -51,6 +56,22 @@ function App() {
           Tailwind and Create React App
         </h1>
       </div>
+
+      <div className="w-full flex flex-col md:flex-row py-32 justify-center items-start bg-gray-100 col-span-2">
+        <div className="mx-4 w-full md:w-1/4 my-6">
+          <h1 className="text-2xl pb-4">Simple List</h1>
+          <SimpleList simpleListData={listData.simpleListData} />
+        </div>
+        <div className="mx-4 w-full md:w-1/4 my-6">
+          <h1 className="text-2xl pb-4">Nested List</h1>
+          <NestedList nestedListData={listData.nestedListData} />
+        </div>
+        <div className="mx-4 w-full md:w-1/4 my-6">
+          <h1 className="text-2xl pb-4">Folder List</h1>
+          <FolderList folderListData={listData.folderListData} />
+        </div>
+      </div>
+
     </div>
   );
 }
