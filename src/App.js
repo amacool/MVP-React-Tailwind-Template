@@ -3,9 +3,9 @@ import CustomTimePicker from "./components/CustomTimePicker";
 import CustomButton from "./components/CustomButton";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
-import SimpleList from "./components/SimpleLists";
-import NestedList from "./components/NestedLists";
-import FolderList from "./components/FolderLists";
+import SimpleList from "./components/SimpleList";
+import NestedList from "./components/NestedList";
+import FolderList from "./components/FolderList";
 import "./App.css";
 
 import { listData } from './dataInfo';
