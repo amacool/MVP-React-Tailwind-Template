@@ -21,7 +21,7 @@
     "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
-    "start": "react-scripts start",
+    "start": "react-scripts start -p $PORT",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -41,5 +41,8 @@
   "devDependencies": {
     "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
