@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const getAvatarSize = (size) => {
     switch(size) {
@@ -34,5 +34,13 @@ Avatar.propTypes = {
     bgColor: PropTypes.string,
     size: PropTypes.string,
 };
+
+Avatar.defaultProps = {
+    altName: "avatar image",
+    imageURL: "",
+    avatarLabel: "",
+    bgColor: "",
+    size: "medium",
+}
 
 export default Avatar;

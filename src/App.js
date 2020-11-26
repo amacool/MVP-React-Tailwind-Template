@@ -8,6 +8,7 @@ import NestedList from "./components/NestedList";
 import FolderList from "./components/FolderList";
 import Avatar from "./components/Avatar";
 import CheckBox from "./components/CheckBox";
+import FloatingActionButton from "./components/FloatingActionButton";
 
 import RemyAvatar from "./assets/images/avatars/Remy.jpg";
 import TravisAvatar from "./assets/images/avatars/Travis.jpg";
@@ -79,33 +80,34 @@ function App() {
         </div>
       </div>
 
-      <div className="flex flex-col items-start">
-        <h1 className="text-2xl pb-10">Avatars</h1>
-        <p className="text-xl">Image Avatars</p>
-        <div className="flex flex-row items-start">
-          <Avatar altName="Remy Sharp" size="small" imageURL={RemyAvatar} />
-          <Avatar altName="Travis Howard" size="medium" imageURL={TravisAvatar} />
-          <Avatar altName="Cindy Baker" size="large" imageURL={CindyAvatar} />
+      <div className="col-span-2 flex flex-row justify-evenly items-start">
+        <div className="flex flex-col items-start">
+          <h1 className="text-2xl pb-10">Avatars</h1>
+          <p className="text-xl">Image Avatars</p>
+          <div className="flex flex-row items-start">
+            <Avatar altName="Remy Sharp" size="small" imageURL={RemyAvatar} />
+            <Avatar altName="Travis Howard" size="medium" imageURL={TravisAvatar} />
+            <Avatar altName="Cindy Baker" size="large" imageURL={CindyAvatar} />
+          </div>
+          <p className="text-xl">Letter Avatars</p>
+          <div className="flex flex-row items-start">
+            <Avatar avatarLabel="H" size="small" bgColor="bg-gray-400" />
+            <Avatar avatarLabel="N" size="medium" bgColor="bg-yellow-600" />
+            <Avatar avatarLabel="OP" size="large" bgColor="bg-purple-700" />
+          </div>
         </div>
-        <p className="text-xl">Letter Avatars</p>
-        <div className="flex flex-row items-start">
-          <Avatar avatarLabel="H" size="small" bgColor="bg-gray-400" />
-          <Avatar avatarLabel="N" size="medium" bgColor="bg-yellow-600" />
-          <Avatar avatarLabel="OP" size="large" bgColor="bg-purple-700" />
-        </div>
-      </div>
 
-      <div className="flex flex-col justify-start items-center">
-        <p className="text-2xl">Checkbox</p>
-        <div className="py-2 px-6 border border-gray-200 rounded bg-white flex flex-row">
-          <CheckBox theme="secondary" checked />
-          <CheckBox theme="primary" checked />
-          <CheckBox />
-          <CheckBox status="disabled" checked />
-          <CheckBox theme="default" checked />
-        </div>
-        <p className="text-2xl mt-12">Checkbox Sizes</p>
-        <div className="py-2 px-6 border border-gray-200 rounded bg-white flex flex-row">
+        <div className="flex flex-col justify-start items-center">
+          <h1 className="text-2xl">Checkbox</h1>
+          <div className="py-2 px-6 flex flex-row">
+            <CheckBox theme="secondary" checked />
+            <CheckBox theme="primary" checked />
+            <CheckBox />
+            <CheckBox status="disabled" checked />
+            <CheckBox theme="default" checked />
+          </div>
+          <p className="text-2xl mt-12">Checkbox Sizes</p>
+          <div className="py-2 px-6 flex flex-row">
             <div className="flex flex-col items-center justify-center mx-4">
               <p>Small</p>
               <CheckBox theme="secondary" size="small" checked />
@@ -118,6 +120,26 @@ function App() {
               <p>Large</p>
               <CheckBox theme="secondary" size="large" checked />
             </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-2xl">Floating Action Buttons</h1>
+          <div className="flex flex-row items-start">
+            <FloatingActionButton color="primary" type="add" />
+            <FloatingActionButton color="secondary" type="edit" />
+            <FloatingActionButton type="extended" label="Extended" />
+          </div>
+          <div className="flex flex-row items-center">
+            <FloatingActionButton size="small" color="primary" type="add" />
+            <FloatingActionButton size="medium" color="primary" type="add" />
+            <FloatingActionButton size="large" color="primary" type="add" />
+          </div>
+          <div className="flex flex-row items-center">
+            <FloatingActionButton size="small" color="primary" type="extended" label="Extended" />
+            <FloatingActionButton size="medium" color="primary" type="extended" label="Extended" />
+            <FloatingActionButton size="large" color="primary" type="extended" label="Extended" />
+          </div>
         </div>
       </div>
     </div>
