@@ -96,10 +96,28 @@ function App() {
       </div>
 
       <div className="flex flex-col justify-start items-center">
-        <p className="text-2xl">CheckBox</p>
+        <p className="text-2xl">Checkbox</p>
         <div className="py-2 px-6 border border-gray-200 rounded bg-white flex flex-row">
-          <CheckBox checked={true} />
-          <CheckBox checked={true} theme="primary" />
+          <CheckBox theme="secondary" checked />
+          <CheckBox theme="primary" checked />
+          <CheckBox />
+          <CheckBox status="disabled" checked />
+          <CheckBox theme="default" checked />
+        </div>
+        <p className="text-2xl mt-12">Checkbox Sizes</p>
+        <div className="py-2 px-6 border border-gray-200 rounded bg-white flex flex-row">
+            <div className="flex flex-col items-center justify-center mx-4">
+              <p>Small</p>
+              <CheckBox theme="secondary" size="small" checked />
+            </div>
+            <div className="flex flex-col items-center justify-center mx-4">
+              <p>Medium</p>
+              <CheckBox theme="secondary" size="medium" checked />
+            </div>
+            <div className="flex flex-col items-center justify-center mx-4">
+              <p>Large</p>
+              <CheckBox theme="secondary" size="large" checked />
+            </div>
         </div>
       </div>
     </div>
