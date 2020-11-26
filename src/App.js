@@ -1,5 +1,6 @@
 import React from "react";
 import CustomTimePicker from "./components/CustomTimePicker";
+import CustomDatePicker from "./components/CustomDatePicker";
 import CustomButton from "./components/CustomButton";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
@@ -18,6 +19,9 @@ function App() {
       <div className="ml-6 pt-1 col-span-1">
         <div className="mb-5">
           <CustomTimePicker label="Alarm clock" />
+        </div>
+        <div className="mb-5">
+          <CustomDatePicker label="Alarm clock" />
         </div>
         <div className="mb-5 flex justify-between items-end">
           <CustomButton label="Primary button" size="small" color="primary" />
