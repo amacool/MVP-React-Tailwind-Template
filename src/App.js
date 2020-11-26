@@ -6,6 +6,13 @@ import CustomSlider from "./components/CustomSlider";
 import SimpleList from "./components/SimpleList";
 import NestedList from "./components/NestedList";
 import FolderList from "./components/FolderList";
+import Avatar from "./components/Avatar";
+import CheckBox from "./components/CheckBox";
+
+import RemyAvatar from "./assets/images/avatars/Remy.jpg";
+import TravisAvatar from "./assets/images/avatars/Travis.jpg";
+import CindyAvatar from "./assets/images/avatars/Cindy.png";
+
 import "./App.css";
 
 import { listData } from './dataInfo';
@@ -72,6 +79,29 @@ function App() {
         </div>
       </div>
 
+      <div className="flex flex-col items-start">
+        <h1 className="text-2xl pb-10">Avatars</h1>
+        <p className="text-xl">Image Avatars</p>
+        <div className="flex flex-row items-start">
+          <Avatar altName="Remy Sharp" size="small" imageURL={RemyAvatar} />
+          <Avatar altName="Travis Howard" size="medium" imageURL={TravisAvatar} />
+          <Avatar altName="Cindy Baker" size="large" imageURL={CindyAvatar} />
+        </div>
+        <p className="text-xl">Letter Avatars</p>
+        <div className="flex flex-row items-start">
+          <Avatar avatarLabel="H" size="small" bgColor="bg-gray-400" />
+          <Avatar avatarLabel="N" size="medium" bgColor="bg-yellow-600" />
+          <Avatar avatarLabel="OP" size="large" bgColor="bg-purple-700" />
+        </div>
+      </div>
+
+      <div className="flex flex-col justify-start items-center">
+        <p className="text-2xl">CheckBox</p>
+        <div className="py-2 px-6 border border-gray-200 rounded bg-white flex flex-row">
+          <CheckBox checked={true} />
+          <CheckBox checked={true} theme="primary" />
+        </div>
+      </div>
     </div>
   );
 }
