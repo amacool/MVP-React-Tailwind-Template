@@ -7,6 +7,7 @@ import CustomSwitch from "./components/CustomSwitch";
 import SimpleList from "./components/SimpleList";
 import NestedList from "./components/NestedList";
 import FolderList from "./components/FolderList";
+import CustomTextField from "./components/CustomTextField";
 import "./App.css";
 
 import { listData } from './dataInfo';
@@ -57,6 +58,16 @@ function App() {
           <CustomSwitch defaultValue={true} label="Switch with label" color="primary" />
           <CustomSwitch label="Switch with label" color="secondary" />
           <CustomSwitch defaultValue={true} />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomTextField defaultValue="hello, world" color="primary" variant="outlined" />
+          <CustomTextField defaultValue="hello, world" color="secondary" variant="outlined" />
+          <CustomTextField defaultValue="hello, world" variant="outlined" />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomTextField defaultValue="hello, world" color="primary" />
+          <CustomTextField defaultValue="hello, world" color="secondary" />
+          <CustomTextField defaultValue="hello, world" />
         </div>
       </div>
       <div className="ml-6 pt-1 col-span-1">

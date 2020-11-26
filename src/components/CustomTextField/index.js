@@ -1,71 +1,54 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const getColorClass = (color) => {
   if (color === 'secondary') {
-    return 'pink-700';
+    return 'pink';
   } else if (color === 'primary') {
-    return 'indigo-700';
+    return 'indigo';
   } else {
-    return 'gray-700';
+    return 'gray';
   }
 };
 
-const CustomTextField = ({ defaultValue, color }) => {
-  const [value, setValue] = useState(defaultValue);
-  const [draggable, setDraggable] = useState(false);
-  const [hoverOnCircle, setHoverOnCircle] = useState(false);
-  const sliderRef = useRef(null);
+const getVariantClass = (colorClass, variant) => {
+  if (variant === 'outlined') {
+    return `py-2 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-${colorClass}-500 focus:border-${colorClass}-500 block w-full sm:text-sm rounded-md`;
+  } else {
+    return `py-2 px-3 shadow-sm border-solid border-b-2 focus:outline-none focus:border-b-2 focus:border-${colorClass}-500 block w-full sm:text-sm`;
+  }
+};
+
+const CustomTextField = ({ defaultValue, color, variant }) => {
   const colorClass = getColorClass(color);
-
-  const getValue = e => {
-    const sliderWidth = sliderRef.current.clientWidth;
-    const offsetX = Math.abs(e.clientX - sliderRef.current.offsetLeft);
-    return Math.min(offsetX/sliderWidth * 100, 100);
-  };
-
-  const handleClickBar = e => {
-    setDraggable(true);
-    setValue(getValue(e));
-  };
-
-  const handleMoveOnBar = e => {
-    draggable && setValue(getValue(e));
-  };
+  const variantClass = getVariantClass(colorClass, variant);
 
   return (
-    <div className="w-40">
-      <span
-        ref={sliderRef}
-        className={`w-full h-0.5 py-3.5 px-0 cursor-pointer inline-block relative box-content text-${colorClass}`}
-        onMouseDown={handleClickBar}
-        onMouseMove={handleMoveOnBar}
-        onMouseUp={() => setDraggable(false)}
-      >
-        <span className="w-full h-0.5 block opacity-40 absolute rounded bg-current" />
-        <span className="h-0.5 block absolute rounded bg-current" style={{ width: `${value}%` }} />
-        <input type="hidden" value={value} />
-        <span
-          className="w-3.5 h-3.5 flex outline-none absolute box-border -mt-1.5 shadow-sm items-center -ml-1.5 rounded-full justify-center bg-current"
-          style={{ left: `${value}%`, boxShadow: hoverOnCircle ? '0px 0px 0px 8px rgba(25, 118, 210, 0.16)' : '' }}
-          onMouseDown={() => setDraggable(true)}
-          onMouseUp={() => setDraggable(false)}
-          onMouseEnter={() => setHoverOnCircle(true)}
-          onMouseOut={() => setHoverOnCircle(false)}
+    <div>
+      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+      <div className="mt-1">
+        <input
+          type="text"
+          id="email"
+          className={variantClass}
+          placeholder="you@example.com"
+          value={defaultValue}
         />
-      </span>
+      </div>
     </div>
   );
 };
 
 CustomTextField.propTypes = {
   defaultValue: PropTypes.number,
-  color: PropTypes.string,
+  color: PropTypes.number,
+  variant: PropTypes.number,
 };
 
 CustomTextField.defaultProps = {
   defaultValue: 0,
   color: 'default',
+  variant: '',
 };
 
 export default CustomTextField;
