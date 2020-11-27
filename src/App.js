@@ -1,8 +1,12 @@
 import React from "react";
 import CustomTimePicker from "./components/CustomTimePicker";
+import CustomDatePicker from "./components/CustomDatePicker";
 import CustomButton from "./components/CustomButton";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
+import CustomSwitch from "./components/CustomSwitch";
+import CustomTextField from "./components/CustomTextField";
+
 import SimpleList from "./components/SimpleList";
 import NestedList from "./components/NestedList";
 import FolderList from "./components/FolderList";
@@ -25,38 +29,58 @@ function App() {
         <div className="mb-5">
           <CustomTimePicker label="Alarm clock" />
         </div>
-        <div className="mb-5 flex justify-between items-end">
-          <CustomButton label="Primary button" size="small" theme="primary" />
-          <CustomButton label="Primary button" size="medium" theme="primary" />
-          <CustomButton label="Primary button" size="large" theme="primary" />
+        <div className="mb-5">
+          <CustomDatePicker label="Alarm clock" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomButton label="Secondary button" size="small" theme="secondary" />
-          <CustomButton label="Secondary button" size="medium" theme="secondary" />
-          <CustomButton label="Secondary button" size="large" theme="secondary" />
+          <CustomButton label="Primary button" size="small" color="primary" />
+          <CustomButton label="Primary button" size="medium" color="primary" />
+          <CustomButton label="Primary button" size="large" color="primary" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomButton label="Default button" size="small" theme="default" />
-          <CustomButton label="Default button" size="medium" theme="default" />
-          <CustomButton label="Default button" size="large" theme="default" />
+          <CustomButton label="Secondary button" size="small" color="secondary" />
+          <CustomButton label="Secondary button" size="medium" color="secondary" />
+          <CustomButton label="Secondary button" size="large" color="secondary" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" theme="outlined" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" theme="outlined" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" theme="outlined" />
+          <CustomButton label="Default button" size="small" />
+          <CustomButton label="Default button" size="medium" />
+          <CustomButton label="Default button" size="large" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" theme="contained" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" theme="contained" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" theme="contained" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" variant="outlined" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" variant="outlined" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" variant="outlined" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" theme="text" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" theme="text" />
-          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" theme="text" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" variant="contained" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" variant="contained" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" variant="contained" />
         </div>
         <div className="mb-5 flex justify-between items-end">
-          <CustomSlider defaultValue={30} />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="small" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="medium" />
+          <CustomButtonGroup label={["ONE", "TWO", "THREE"]} size="large" />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomSlider defaultValue={30} color="primary" />
+          <CustomSlider defaultValue={50} color="secondary" />
+          <CustomSlider defaultValue={70} />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomSwitch defaultValue={true} label="Switch with label" color="primary" />
+          <CustomSwitch label="Switch with label" color="secondary" />
+          <CustomSwitch defaultValue={true} />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomTextField defaultValue="hello, world" color="primary" variant="outlined" />
+          <CustomTextField defaultValue="hello, world" color="secondary" variant="outlined" />
+          <CustomTextField defaultValue="hello, world" variant="outlined" />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomTextField defaultValue="hello, world" color="primary" />
+          <CustomTextField defaultValue="hello, world" color="secondary" />
+          <CustomTextField defaultValue="hello, world" />
         </div>
       </div>
       <div className="ml-6 pt-1 col-span-1">
