@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { SelectItem } from './SelectItem';
-import { getTwoDigits } from '../../helper';
-import { uuid } from 'uuidv4';
+
+const getTwoDigits = (val) => val < 10 ? `0${val}` : val;
 
 const CustomTimePicker = ({ label }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,12 +42,12 @@ const CustomTimePicker = ({ label }) => {
               <div className="grid grid-cols-3">
                 <div className="h-60 col-span-1 overflow-y-auto item-wrapper" style={{ height: 200 }}>
                   {[...new Array(12)].map((_, key) => (
-                    <SelectItem key={uuid()} text={key} isActive={hour === key} onSetValue={setHour} />
+                    <SelectItem key={`h-${key}`} text={key} isActive={hour === key} onSetValue={setHour} />
                   ))}
                 </div>
                 <div className="h-60 col-span-1 overflow-y-auto item-wrapper" style={{ height: 200 }}>
                   {[...new Array(60)].map((_, key) => (
-                    <SelectItem key={uuid()} text={key} isActive={minute === key} onSetValue={setMinute} />
+                    <SelectItem key={`m-${key}`} text={key} isActive={minute === key} onSetValue={setMinute} />
                   ))}
                 </div>
                 <div className="h-60 col-span-1 overflow-y-auto item-wrapper" style={{ height: 200 }}>

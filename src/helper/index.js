@@ -1,1 +1,0 @@
-export const getTwoDigits = (val) => val < 10 ? `0${val}` : val;
