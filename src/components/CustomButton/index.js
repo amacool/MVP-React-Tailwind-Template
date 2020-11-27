@@ -11,24 +11,24 @@ const getSizeClass = (size) => {
   }
 };
 
-const getThemeClass = (theme) => {
-  if (theme === 'secondary') {
+const getColorClass = (color) => {
+  if (color === 'secondary') {
     return 'text-indigo-700 bg-indigo-100 hover:bg-indigo-200';
-  } else if (theme === 'primary') {
+  } else if (color === 'primary') {
     return 'text-white bg-indigo-600 hover:bg-indigo-700';
   } else {
     return 'text-gray-700 bg-white hover:bg-gray-50 border-gray-300';
   }
 };
 
-const CustomButton = ({ label, size, theme }) => {
+const CustomButton = ({ label, size, color }) => {
   const sizeClass = getSizeClass(size);
-  const themeClass = getThemeClass(theme);
+  const colorClass = getColorClass(color);
 
   return (
     <button
       type="button"
-      className={`inline-flex items-center ${sizeClass} ${themeClass} border border-transparent font-medium rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+      className={`inline-flex items-center ${sizeClass} ${colorClass} border border-transparent font-medium rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
     >
       {label}
     </button>
@@ -38,7 +38,13 @@ const CustomButton = ({ label, size, theme }) => {
 CustomButton.propTypes = {
   label: PropTypes.string,
   size: PropTypes.string,
-  theme: PropTypes.string,
+  color: PropTypes.string,
+};
+
+CustomButton.defaultProps = {
+  label: '',
+  size: 'small',
+  color: 'default',
 };
 
 export default CustomButton;

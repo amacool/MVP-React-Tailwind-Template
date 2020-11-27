@@ -1,6 +1,7 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
-import { getTwoDigits } from '../../helper';
+
+const getTwoDigits = (val) => val < 10 ? `0${val}` : val;
 
 export const SelectItem = ({ text, isActive, onSetValue }) => (
   <div
