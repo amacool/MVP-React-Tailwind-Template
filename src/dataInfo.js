@@ -1,10 +1,10 @@
-import InboxIcon from './assets/images/inbox.svg';
-import DraftsIcon from './assets/images/drafts.svg';
-import EmailSentIcon from './assets/images/send-mail.svg';
-import PhotoIcon from './assets/images/photo.svg';
-import StarIcon from './assets/images/star.svg';
-import InboxWorkIcon from './assets/images/inbox-work.svg';
-import DraftsWorkIcon from './assets/images/drafts-work.svg';
+import InboxIcon from './assets/images/icons/inbox.svg';
+import DraftsIcon from './assets/images/icons/drafts.svg';
+import EmailSentIcon from './assets/images/icons/send-mail.svg';
+import PhotoIcon from './assets/images/icons/photo.svg';
+import StarIcon from './assets/images/icons/star.svg';
+import InboxWorkIcon from './assets/images/icons/inbox-work.svg';
+import DraftsWorkIcon from './assets/images/icons/drafts-work.svg';
 
 export const listData = {
     simpleListData: {
@@ -47,7 +47,7 @@ export const listData = {
             icon: InboxWorkIcon,
             date: 'Jan 7, 2014',
         }, {
-            name: 'Vacatiopn',
+            name: 'Vacation',
             icon: DraftsWorkIcon,
             date: 'July 20, 2014',
         },
