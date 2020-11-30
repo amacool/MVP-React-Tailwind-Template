@@ -30,6 +30,19 @@ const getBgColor = (colorType) => {
     }
 }
 
+const getHoverColor = (colorType) => {
+    switch (colorType) {
+        case "primary":
+            return "bg-blue-800";
+        case "secondary":
+            return "bg-red-800";
+        case "default":
+            return "bg-gray-600";
+        default:
+            return "bg-gray-600";
+    }
+}
+
 const getButtonSize = (sizeProps) => {
     switch(sizeProps) {
         case "small":
@@ -46,9 +59,10 @@ const getButtonSize = (sizeProps) => {
 const FloatingActionButton = ({ type, color, label, size }) => {
     const iconTypes = getIcon(type);
     const bgColor = getBgColor(color);
+    const hoverBgColor = getHoverColor(color)
     const buttonSize = getButtonSize(size);
     return (
-        <div className={`rounded-full p-${buttonSize} ${bgColor} m-2 flex flex-row items-center shadow-lg cursor-pointer`}>
+        <div className={`rounded-full p-${buttonSize} ${bgColor} hover:${hoverBgColor} m-2 flex flex-row items-center shadow-lg cursor-pointer`}>
             <img className="w-6 h-6" src={iconTypes} alt="action-icon" />
             {label && <p className="px-4 text-white text-lg font-normal tracking-wider">{label}</p>}
         </div>
