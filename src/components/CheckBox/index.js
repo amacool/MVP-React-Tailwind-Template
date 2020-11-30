@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import CheckMarkIcon from "../../assets/images/icons/check-icon.svg";
 
 const getBgColorTheme = (theme, status) => {
@@ -35,6 +35,9 @@ const CheckBox = ({ theme, checked, status, size }) => {
     const [isChecked, setIsChecked] = useState(checked);
     const bgColor = getBgColorTheme(theme, status);
     const boxSize = getSize(size);
+    useEffect(() => {
+        setIsChecked(checked);
+    }, [checked]);
     return (
         <div
             className={`w-${boxSize} h-${boxSize} rounded-sm ${isChecked ? bgColor : "border-2 border-gray-600"} m-2 cursor-pointer`}

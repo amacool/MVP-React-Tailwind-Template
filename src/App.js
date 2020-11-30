@@ -14,6 +14,11 @@ import FolderList from "./components/FolderList";
 import Avatar from "./components/Avatar";
 import CheckBox from "./components/CheckBox";
 import FloatingActionButton from "./components/FloatingActionButton";
+import RadioGroup from "./components/RadioGroup";
+import TransferList from "./components/TransferList";
+import EnhancedTransferList from "./components/EnhancedTransferList";
+import BottomNavigation from "./components/BottomNavigation";
+import BottomNavigationWithNoLabel from "./components/BottomNavigationNoLabel";
 
 import RemyAvatar from "./assets/images/avatars/Remy.jpg";
 import TravisAvatar from "./assets/images/avatars/Travis.jpg";
@@ -21,7 +26,13 @@ import CindyAvatar from "./assets/images/avatars/Cindy.png";
 
 import "./App.css";
 
-import { listData } from './dataInfo';
+import {
+  listData,
+  radioGroupData,
+  transferListData,
+  bottomNavigation,
+  bottomNavigationWithNoLabel,
+} from './dataInfo';
 
 function App() {
   return (
@@ -100,7 +111,7 @@ function App() {
         </h1>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row py-32 justify-center items-start bg-gray-100 col-span-2">
+      <div className="flex flex-col md:flex-row py-32 justify-center items-start bg-gray-100 col-span-2">
         <div className="mx-4 w-full md:w-1/4 my-6">
           <h1 className="text-2xl pb-4">Simple List</h1>
           <SimpleList simpleListData={listData.simpleListData} />
@@ -176,6 +187,31 @@ function App() {
             <FloatingActionButton size="large" color="primary" type="extended" label="Extended" />
           </div>
         </div>
+      </div>
+
+      <div className="col-span-2 flex flex-row justify-evenly items-start mt-24">
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-2xl">Radio Group</h1>
+          <RadioGroup size="medium" color="secondary" radioGroupData={radioGroupData} />
+        </div>
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl pb-6">Simple Transfer List</h1>
+          <TransferList transferListData={transferListData} />
+        </div>
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl pb-6">Enhanced Transfer List</h1>
+          <EnhancedTransferList transferListData={transferListData} />
+        </div>
+      </div>
+
+      <div className="col-span-1 px-4 mt-12 flex flex-col items-center">
+        <h1 className="text-2xl pb-6">Bottom Navigation</h1>
+        <BottomNavigation bottomNavigationData={bottomNavigation} />
+      </div>
+
+      <div className="col-span-1 px-2 mt-12 flex flex-col items-center">
+        <h1 className="text-2xl pb-6">Bottom Navigation with no label</h1>
+        <BottomNavigationWithNoLabel navigationData={bottomNavigationWithNoLabel} />
       </div>
     </div>
   );
