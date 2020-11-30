@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import IconSwitch from "./iconsSwitch";
+import IconSwitch from "./IconSwitch";
 import PropTypes from "prop-types";
 
 const BottomNavigation = ({ bottomNavigationData }) => {

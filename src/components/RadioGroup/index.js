@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import RadioItem from "./radioItem";
+import RadioItem from "./RadioItems";
 
 const RadioGroup = ({ radioGroupData, size, color }) => {
     const [groupData, setGroupData] = useState(radioGroupData.data);

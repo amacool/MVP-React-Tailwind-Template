@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import ListBlock from "./listBlock";
+import ListBlock from "./ListsBlock";
 
 const TransferList = ({ transferListData }) => {
     const [rightBlock, setRightBlock] = useState(transferListData.rightBlock);
