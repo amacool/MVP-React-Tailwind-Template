@@ -53,3 +53,88 @@ export const listData = {
         },
     ],
 }
+
+export const radioGroupData = {
+    groupName: "Gender",
+    data: [
+        {
+            name: "Female",
+            status: "enable",
+            selected: true,
+        },{
+            name: "Male",
+            status: "enable",
+            selected: false,
+        },{
+            name: "Other",
+            status: "enable",
+            selected: false,
+        },{
+            name: "(Disabled Option)",
+            status: "disable",
+            selected: false,
+        },
+    ]
+}
+
+export const transferListData = {
+    leftBlock: [
+        {
+            name: "Item 1",
+            selected: false,
+        },{
+            name: "Item 2",
+            selected: false,
+        },{
+            name: "Item 3",
+            selected: false,
+        },{
+            name: "Item 4",
+            selected: false,
+        },
+    ],
+    rightBlock: [
+        {
+            name: "Item 5",
+            selected: false,
+        },{
+            name: "Item 6",
+            selected: false,
+        },{
+            name: "Item 7",
+            selected: false,
+        },{
+            name: "Item 8",
+            selected: false,
+        },
+    ]
+}
+
+export const bottomNavigation = [
+    {
+        name: "Recents",
+        selected: true,
+    },{
+        name: "Favorites",
+        selected: false,
+    },{
+        name: "Nearby",
+        selected: false,
+    },
+];
+
+export const bottomNavigationWithNoLabel = [
+    {
+        name: "Recents",
+        selected: true,
+    },{
+        name: "Favorites",
+        selected: false,
+    },{
+        name: "Nearby",
+        selected: false,
+    },{
+        name: "Folder",
+        selected: false,
+    },
+]
