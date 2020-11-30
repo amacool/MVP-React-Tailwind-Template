@@ -6,6 +6,7 @@ import CustomButtonGroup from "./components/CustomButtonGroup";
 import CustomSlider from "./components/CustomSlider";
 import CustomSwitch from "./components/CustomSwitch";
 import CustomTextField from "./components/CustomTextField";
+import CustomSelectBox from "./components/CustomSelectBox";
 
 import SimpleList from "./components/SimpleList";
 import NestedList from "./components/NestedList";
@@ -81,6 +82,16 @@ function App() {
           <CustomTextField defaultValue="hello, world" color="primary" />
           <CustomTextField defaultValue="hello, world" color="secondary" />
           <CustomTextField defaultValue="hello, world" />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} color="primary" variant="outlined" />
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} color="secondary" variant="outlined" />
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} variant="outlined" />
+        </div>
+        <div className="mb-5 flex justify-between items-end">
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} color="primary" />
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} color="secondary" />
+          <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} />
         </div>
       </div>
       <div className="ml-6 pt-1 col-span-1">
