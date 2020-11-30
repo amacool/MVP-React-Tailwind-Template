@@ -7,7 +7,7 @@ const BottomNavigation = ({ bottomNavigationData }) => {
 
     const toggleNav = (index) => {
         let newNavData = [];
-        navData.forEach(navs => {
+        navData.map(navs => {
             newNavData.push({ ...navs, selected: false });
         });
         newNavData[index] = { ...newNavData[index], selected: true };

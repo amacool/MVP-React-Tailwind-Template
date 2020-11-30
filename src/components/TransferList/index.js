@@ -20,12 +20,12 @@ const TransferList = ({ transferListData }) => {
     const handleAllTransfer = (direction) => {
         let newCopyBlockList = [];
         if(direction === "right") {
-            leftBlock.forEach(element => {
+            leftBlock.map(element => {
                 newCopyBlockList.push({...element, selected: false});
             });
         }
         else {
-            rightBlock.forEach(element => {
+            rightBlock.map(element => {
                 newCopyBlockList.push({...element, selected: false});
             });
         }
@@ -37,12 +37,12 @@ const TransferList = ({ transferListData }) => {
         direction === "right" ? setLeftBlock(leftUnChecked) : setRightBlock(rightUnChecked);
         let newMergeList = [];
         if(direction === "right") {
-            leftChecked.forEach(item => {
+            leftChecked.map(item => {
                 newMergeList.push({...item, selected: false});
             });
         }
         else {
-            rightChecked.forEach(item => {
+            rightChecked.map(item => {
                 newMergeList.push({...item, selected: false});
             });
         }
