@@ -6,10 +6,7 @@ const RadioGroup = ({ radioGroupData, size, color }) => {
     const [groupData, setGroupData] = useState(radioGroupData.data);
 
     const setData = (id) => {
-        let virtualData = [];
-        groupData.map(dataItem => {
-            virtualData.push({...dataItem, selected: false});
-        });
+        let virtualData = groupData.map(dataItem => ({...dataItem, selected: false}));
         virtualData[id] = {...virtualData[id], selected: true};
         setGroupData(virtualData);
     }

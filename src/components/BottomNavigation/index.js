@@ -6,10 +6,7 @@ const BottomNavigation = ({ bottomNavigationData }) => {
     const [navData, setNavData] = useState(bottomNavigationData);
 
     const toggleNav = (index) => {
-        let newNavData = [];
-        navData.map(navs => {
-            newNavData.push({ ...navs, selected: false });
-        });
+        let newNavData = navData.map(navs => ({ ...navs, selected: false }));
         newNavData[index] = { ...newNavData[index], selected: true };
         setNavData(newNavData);
     }

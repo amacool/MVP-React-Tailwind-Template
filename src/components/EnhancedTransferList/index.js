@@ -21,29 +21,21 @@ const EnhancedTransferList = ({ transferListData }) => {
         direction === "right" ? setLeftBlock(leftUnChecked) : setRightBlock(rightUnChecked);
         let newMergeList = [];
         if (direction === "right") {
-            leftChecked.map(item => {
-                newMergeList.push({ ...item, selected: false });
-            });
+            newMergeList = leftChecked.map(item => ({ ...item, selected: false }));
         }
         else {
-            rightChecked.map(item => {
-                newMergeList.push({ ...item, selected: false });
-            });
+            newMergeList = rightChecked.map(item => ({ ...item, selected: false }));
         }
         direction === "right" ? setRightBlock(rightBlock.concat(newMergeList)) : setLeftBlock(leftBlock.concat(newMergeList));
     }
 
     const setAllList = (side, action) => {
-        const newSideList = [];
+        let newSideList = [];
         if(side === "left") {
-            leftBlock.map(item => {
-                newSideList.push({...item, selected: action ==="select" ? true : false});
-            });
+            newSideList = leftBlock.map(item => ({...item, selected: action ==="select" ? true : false}));
         }
         else {
-            rightBlock.map(item => {
-                newSideList.push({...item, selected: action ==="select" ? true : false});
-            });
+            newSideList = rightBlock.map(item => ({...item, selected: action ==="select" ? true : false}));
         }
         side === "left" ? setLeftBlock(newSideList) : setRightBlock(newSideList);
     }
