@@ -7,6 +7,8 @@ import CustomSlider from "./components/CustomSlider";
 import CustomSwitch from "./components/CustomSwitch";
 import CustomTextField from "./components/CustomTextField";
 import CustomSelectBox from "./components/CustomSelectBox";
+import LinearProgressBar from "./components/LinearProgressBar";
+import CircularProgressBar from "./components/CircularProgressBar";
 
 import SimpleList from "./components/SimpleList";
 import NestedList from "./components/NestedList";
@@ -37,7 +39,32 @@ import {
 function App() {
   return (
     <div className="w-full mx-auto flex p-6 bg-gray-100 mt-10 rounded-lg shadow-xl grid grid-cols-2">
-      <div className="ml-6 pt-1 col-span-1">
+      <div className="ml-6 pt-1 col-span-2">
+        <div className="mb-5">
+          <h1 className="text-2xl pb-4">Linear indeterminate</h1>
+          <LinearProgressBar defaultValue={30} color="primary" />
+          <LinearProgressBar defaultValue={50} color="secondary" />
+          <LinearProgressBar defaultValue={80} />
+        </div>
+
+        <div className="mb-5">
+          <h1 className="text-2xl pb-4">Linear with label</h1>
+          <LinearProgressBar defaultValue={30} color="primary" withLabel />
+          <LinearProgressBar defaultValue={50} color="secondary" withLabel />
+          <LinearProgressBar defaultValue={80} withLabel />
+        </div>
+
+        <div className="mb-5 flex justify-between items-end">
+          <CircularProgressBar defaultValue={30} radius={40} color="primary" withLabel />
+          <CircularProgressBar defaultValue={50} radius={40} color="secondary" withLabel />
+          <CircularProgressBar defaultValue={80} radius={40} withLabel />
+        </div>
+
+        <div className="mb-5 flex justify-between items-end">
+          <CircularProgressBar defaultValue={30} radius={40} color="primary" />
+          <CircularProgressBar defaultValue={50} radius={40} color="secondary" />
+          <CircularProgressBar defaultValue={80} radius={40} />
+        </div>
         <div className="mb-5">
           <CustomTimePicker label="Alarm clock" />
         </div>
@@ -104,11 +131,6 @@ function App() {
           <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} color="secondary" />
           <CustomSelectBox label="Assigned to" defaultValue="Arlene Mccoy" options={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt", "Tailwind"]} />
         </div>
-      </div>
-      <div className="ml-6 pt-1 col-span-1">
-        <h1 className="text-2xl text-blue-700 leading-tight text-center">
-          Tailwind and Create React App
-        </h1>
       </div>
 
       <div className="flex flex-col md:flex-row py-32 justify-center items-start bg-gray-100 col-span-2">
