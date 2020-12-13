@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from './ListItems';
+import { ListItem } from './listItem';
 import PropTypes from 'prop-types';
 
 export const NestedList = ({ nestedListData }) => {

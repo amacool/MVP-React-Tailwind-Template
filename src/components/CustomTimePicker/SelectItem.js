@@ -13,7 +13,7 @@ export const SelectItem = ({ text, isActive, onSetValue }) => (
 );
 
 SelectItem.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.any,
   isActive: PropTypes.bool,
   onSetValue: PropTypes.func,
 };

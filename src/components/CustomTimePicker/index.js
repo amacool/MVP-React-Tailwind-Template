@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { SelectItem } from './SelectItem';
 
@@ -9,6 +9,21 @@ const CustomTimePicker = ({ label }) => {
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [dayLabel, setDayLabel] = useState('AM');
+  const toggleContainer = React.createRef();
+
+  useEffect(() => {
+    window.addEventListener("click", onClickOutsideHandler);
+
+    return () => {
+      window.removeEventListener("click", onClickOutsideHandler);
+    }
+  });
+
+  const onClickOutsideHandler = event => {
+    if (isOpen && toggleContainer.current && !toggleContainer.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  }
 
   const handleSwitchDropdown = () => {
     setIsOpen(!isOpen);
@@ -36,8 +51,9 @@ const CustomTimePicker = ({ label }) => {
           enter-to-class="opacity-100 translate-y-0"
           leave-class="opacity-100 translate-y-0"
           leave-to-class="opacity-0 translate-y-1"
+          ref={toggleContainer}
         >
-          <div style={{ display: isOpen ? 'block' : 'none' }} className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div style={{ display: isOpen ? 'block' : 'none' }} className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
             <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
               <div className="grid grid-cols-3">
                 <div className="h-60 col-span-1 overflow-y-auto item-wrapper" style={{ height: 200 }}>

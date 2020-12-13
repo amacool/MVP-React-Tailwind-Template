@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ArrowUpIcon from '../../assets/images/icons/arrow-up.svg';
-import ArrowDownIcon from '../../assets/images/icons/arrow-down.svg';
+import ArrowUpIcon from '../../assets/images/arrow-up.svg';
+import ArrowDownIcon from '../../assets/images/arrow-down.svg';
 import PropTypes from 'prop-types';
 
 export const ListItem = ({ itemData }) => {

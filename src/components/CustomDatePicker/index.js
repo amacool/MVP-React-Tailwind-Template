@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { SelectDayPanel } from "./SelectDayPanel";
+import { SelectMonthPanel } from "./SelectMonthPanel";
+import { SelectYearPanel } from "./SelectYearPanel";
+import { getTwoDigits, monthNames, yearRange, checkValidDate, getColorClass } from "./helper";
 
-const getTwoDigits = (val) => val < 10 ? `0${val}` : val;
-
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const weekDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-const yearRange = 12;
-
-const CustomDatePicker = ({ label }) => {
+const CustomDatePicker = ({ label, defaultValue, color }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const [year, setYear] = useState();
-  const [month, setMonth] = useState();
-  const [day, setDay] = useState();
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [day, setDay] = useState(null);
 
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-
   const [showedYear, setShowedYear] = useState(new Date().getFullYear());
   const [selectMode, setSelectMode] = useState("day");
   const [rangeStartYear, setRangeStartYear] = useState(new Date().getFullYear() - 10);
-
+  const [dateLabel, setDateLabel] = useState('');
+  const colorClass = getColorClass(color);
   const toggleContainer = React.createRef();
+
+  useEffect(() => {
+    if (defaultValue) {
+      setYear(defaultValue.getFullYear());
+      setMonth(defaultValue.getMonth());
+      setDay(defaultValue.getDate());
+      setDateLabel(`${getTwoDigits(defaultValue.getMonth() + 1)}/${getTwoDigits(defaultValue.getDate())}/${defaultValue.getFullYear()}`);
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("click", onClickOutsideHandler);
@@ -35,29 +41,16 @@ const CustomDatePicker = ({ label }) => {
     if (isOpen && toggleContainer.current && !toggleContainer.current.contains(event.target)) {
       setIsOpen(false);
       setSelectMode("day");
-      setCurrentYear(year || new Date().getFullYear());
-      setCurrentMonth(month || new Date().getMonth());
     }
   }
 
   const handleSwitchDropdown = () => {
-    if (isOpen) {
-      setCurrentYear(year || new Date().getFullYear());
-      setCurrentMonth(month || new Date().getMonth());
+    if (!isOpen) {
+      setCurrentYear(year ? year : new Date().getFullYear());
+      setCurrentMonth(month >= 0 ? month : new Date().getMonth());
+      setRangeStartYear((year ? year : new Date().getFullYear()) - 10)
     }
     setIsOpen(!isOpen);
-  };
-
-  const isLeapYear = y => {
-    return ((y % 4 === 0) && (y % 100 !== 0)) || (y % 400 === 0);
-  };
-
-  const getDaysInMonth = (y, m) => {
-    return [31, isLeapYear(y) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m];
-  };
-
-  const getStartWeekDay = (y, m) => {
-    return new Date(y, m).getDay();
   };
 
   const handlePrev = () => {
@@ -96,7 +89,22 @@ const CustomDatePicker = ({ label }) => {
     setYear(y);
     setMonth(m);
     setDay(d);
+    setDateLabel(`${getTwoDigits(m + 1)}/${getTwoDigits(d)}/${y}`);
     handleSwitchDropdown();
+  };
+
+  const setDateFromTextInput = (text) => {
+    if (checkValidDate(text)) {
+      setYear(+text.split('/')[2]);
+      setMonth(text.split('/')[0] - 1);
+      setDay(+text.split('/')[1]);
+      setDateLabel(`${getTwoDigits(+text.split('/')[0])}/${getTwoDigits(+text.split('/')[1])}/${+text.split('/')[2]}`);
+    } else {
+      setYear();
+      setMonth();
+      setDay();
+      setDateLabel("");
+    }
   };
 
   const changeCurrentMonth = m => {
@@ -113,18 +121,13 @@ const CustomDatePicker = ({ label }) => {
   return (
     <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-xl">
       <label className="block text-sm mb-1 text-gray-500">{label}</label>
-      <div ref={toggleContainer} className="relative inline-block text-left w-56">
+      <div className="relative inline-block text-left w-56">
         <div
-          onClick={handleSwitchDropdown}
-          className="inline-flex justify-between w-full border-b-1 border-black shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+          className="inline-flex justify-between items-center w-full border-b-1 border-black shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           aria-haspopup="true" aria-expanded="true"
         >
-          <div className="value-container flex items-center justify-around">
-            {day && (
-              <span className="w-4">{getTwoDigits(month + 1)}/{getTwoDigits(day)}/{year}</span>
-            )}
-          </div>
-          <button style={{outline: 0}}>
+          <input onBlur={() => setDateFromTextInput(event.target.value)} onChange={() => setDateLabel(event.target.value)} value={dateLabel} placeholder="MM/dd/YYYY" type="text" className="w-full h-full font-semibold hover:bg-gray-50 focus:outline-none px-4 py-2" />
+          <button onClick={handleSwitchDropdown} className="absolute right-4 focus:outline-none">
             <svg
               className="-mr-1 ml-2 h-5 w-5 cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +146,7 @@ const CustomDatePicker = ({ label }) => {
           enter-to-class="opacity-100 translate-y-0"
           leave-class="opacity-100 translate-y-0"
           leave-to-class="opacity-0 translate-y-1"
+          ref={toggleContainer}
         >
           <div
             style={{display: isOpen ? "block" : "none"}}
@@ -150,7 +154,7 @@ const CustomDatePicker = ({ label }) => {
           >
             <div className="py-1">
               <div className="flex justify-between py-4">
-                <button onClick={handlePrev} style={{outline: 0}}>
+                <button onClick={handlePrev}  className="focus:outline-none hover:bg-gray-200 rounded-full p-1">
                   <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <g
                       id="Stockholm-icons-/-Navigation-/-Angle-left"
@@ -169,13 +173,13 @@ const CustomDatePicker = ({ label }) => {
                   </svg>
                 </button>
 
-                <p className="text-lg">
+                <p className="text-lg py-0.5 px-4 hover:bg-gray-200 rounded-full">
                   {selectMode === "day" && <span className="cursor-pointer" onClick={() => setSelectMode("month")}>{monthNames[currentMonth]} {currentYear}</span>}
                   {selectMode === "month" && <span className="cursor-pointer" onClick={() => setSelectMode("year")}>{currentYear}</span>}
                   {selectMode === "year" && <span className="cursor-pointer" onClick={() => setSelectMode("day")}>{rangeStartYear} - {rangeStartYear + yearRange - 1}</span>}
                 </p>
 
-                <button onClick={handleNext} style={{ outline: 0 }}>
+                <button onClick={handleNext} className="focus:outline-none hover:bg-gray-200 rounded-full p-1">
                   <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <g id="Stockholm-icons-/-Navigation-/-Angle-right" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                       <polygon points="0 0 24 0 24 24 0 24"></polygon>
@@ -189,60 +193,34 @@ const CustomDatePicker = ({ label }) => {
                 </button>
               </div>
               {selectMode === "day" && (
-                <div className="grid grid-cols-7">
-                  {weekDays.map((weekDay, i) => (
-                    <div key={`weekday-${i}`} className="col-span-1 text-center cursor-pointer text-gray-500 pb-3">{weekDay}</div>
-                  ))}
-                  {getStartWeekDay(currentYear, currentMonth) > 0 && (
-                    <div className={`col-span-${getStartWeekDay(currentYear, currentMonth)}`}></div>
-                  )}
-                  {[...new Array(getDaysInMonth(currentYear, currentMonth))].map((_, i) => (
-                    <div
-                      key={`day-${i}`}
-                      onClick={() => setDate(currentYear, currentMonth, i + 1)}
-                      className="col-span-1 text-center py-0.5"
-                    >
-                      <button
-                        className={`rounded-full ${(day === (i + 1) && month === currentMonth && year === currentYear) ? "bg-indigo-600 text-white" : "hover:bg-gray-200"}`}
-                        style={{width: 30, height: 30, outline: 0}}
-                      >
-                        {i + 1}
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <SelectDayPanel
+                  currentYear={currentYear}
+                  currentMonth={currentMonth}
+                  year={year}
+                  month={month}
+                  day={day}
+                  colorClass={colorClass}
+                  onSetDate={setDate} />
               )}
 
               {selectMode === "month" && (
-                <div className="grid grid-cols-3">
-                  {monthNames.map((monthName, i) => (
-                    <div key={`month-${i}`} className="col-span-1 text-center font-medium px-2 py-4">
-                      <button
-                        onClick={() => changeCurrentMonth(i)}
-                        className={`rounded-full ${(currentYear === year && i === month) ? "bg-indigo-600 text-white" : (showedYear === currentYear && i === currentMonth) ? "bg-gray-200" : "hover:bg-gray-200"}`}
-                        style={{width: 70, height: 30, outline: 0}}
-                      >
-                        {monthName.substr(0, 3).toUpperCase()}
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <SelectMonthPanel
+                  currentYear={currentYear}
+                  currentMonth={currentMonth}
+                  year={year}
+                  month={month}
+                  showedYear={showedYear}
+                  colorClass={colorClass}
+                  onChangeCurrentMonth={changeCurrentMonth} />
               )}
 
               {selectMode === "year" && (
-                <div className="grid grid-cols-3">
-                  {[...new Array(yearRange)].map((_, i) => (
-                    <div key={`year-${i}`} className="col-span-1 text-center font-medium px-2 py-4">
-                      <button
-                        onClick={() => changeCurrentYear(i + rangeStartYear)}
-                        className={`rounded-full ${((i + rangeStartYear) === year) ? "bg-indigo-600 text-white" : ((i + rangeStartYear) === showedYear) ? "bg-gray-200" : "hover:bg-gray-200"}`}
-                        style={{width: 70, height: 30, outline: 0}}
-                      >
-                        {i + rangeStartYear}
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <SelectYearPanel
+                  year={year}
+                  showedYear={showedYear}
+                  rangeStartYear={rangeStartYear}
+                  colorClass={colorClass}
+                  onChangeCurrentYear={changeCurrentYear} />
               )}
             </div>
           </div>
@@ -254,6 +232,8 @@ const CustomDatePicker = ({ label }) => {
 
 CustomDatePicker.propTypes = {
   label: PropTypes.string,
+  defaultValue: PropTypes.object,
+  color: PropTypes.string
 };
 
 export default CustomDatePicker;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const getColorClass = (color) => {
@@ -20,19 +20,20 @@ const getVariantClass = (colorClass, variant) => {
 };
 
 const CustomTextField = ({ defaultValue, color, variant }) => {
+  const [value, setValue] = useState(defaultValue);
   const colorClass = getColorClass(color);
   const variantClass = getVariantClass(colorClass, variant);
 
   return (
     <div>
-      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+      <label className="block text-sm font-medium text-gray-700">Email</label>
       <div className="mt-1">
         <input
           type="text"
-          id="email"
           className={variantClass}
           placeholder="you@example.com"
-          value={defaultValue}
+          value={value}
+          onChange={() => setValue(event.target.value)}
         />
       </div>
     </div>
@@ -40,13 +41,13 @@ const CustomTextField = ({ defaultValue, color, variant }) => {
 };
 
 CustomTextField.propTypes = {
-  defaultValue: PropTypes.number,
-  color: PropTypes.number,
-  variant: PropTypes.number,
+  defaultValue: PropTypes.string,
+  color: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 CustomTextField.defaultProps = {
-  defaultValue: 0,
+  defaultValue: '',
   color: 'default',
   variant: '',
 };

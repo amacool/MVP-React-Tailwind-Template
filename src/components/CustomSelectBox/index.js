@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { SelectOption } from "./SelectOption";
 
@@ -90,8 +90,8 @@ CustomSelectBox.propTypes = {
   label: PropTypes.string,
   defaultValue: PropTypes.any,
   options: PropTypes.array,
-  color: PropTypes.number,
-  variant: PropTypes.number,
+  color: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 CustomSelectBox.defaultProps = {

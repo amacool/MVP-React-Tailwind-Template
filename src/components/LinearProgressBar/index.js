@@ -20,8 +20,8 @@ export const LinearProgressBar = ({ defaultValue, color, withLabel }) => {
   }, []);
 
   return (
-    <div className="flex items-center px-1">
-      <div className={`flex-1 h-1.5 w-full bg-${colorClass}-300 my-2`}>
+    <div className="flex items-center px-1 w-full">
+      <div className={`flex-1 h-1.5 bg-${colorClass}-300 my-2`}>
         <div className={`h-full bg-${colorClass}-700`}
              style={{
                transition: `all 0.4s ease`,
