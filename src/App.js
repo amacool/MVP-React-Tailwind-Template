@@ -30,6 +30,8 @@ function App() {
             <br />
             The template is based on these <a className="text-blue-500" rel="noreferrer" target="_blank" href="https://tailwindui.com/components">Tailwind components </a>
             and <a className="text-blue-500" rel="noreferrer" target="_blank" href="https://material-ui.com/">material-ui.</a>
+            <br />
+            Following components have no dependencies, pure tailwind/react components that are compatible with any React projects.
           </pre>
         </div>
       </div>
