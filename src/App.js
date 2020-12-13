@@ -20,7 +20,21 @@ import { listData } from './dataInfo';
 function App() {
   return (
     <div className="w-full mx-auto flex p-6 bg-gray-100 rounded-lg shadow-xl grid grid-cols-2">
-      <div className="ml-6 pt-1 col-span-1">
+      <div className="pt-1 col-span-2 mb-5">
+        <div className="rounded-t-xl overflow-hidden bg-gradient-to-r from-emerald-50 to-teal-100 p-10">
+          <p className="text-purple-600 text-center text-xl font-semibold truncate">MVP: React-Tailwind-Template</p>
+        </div>
+        <div className="overflow-hidden rounded-b-xl bg-emerald-500">
+          <pre className="scrollbar-none overflow-x-auto p-6 text-sm leading-snug language-html text-white bg-black bg-opacity-75">
+            The idea of this MVP is to develop a ready-made, easy-to-use (copy & paste) template based on React and Tailwind.
+            <br />
+            The template is based on these <a className="text-blue-500" rel="noreferrer" target="_blank" href="https://tailwindui.com/components">Tailwind components </a>
+            and <a className="text-blue-500" rel="noreferrer" target="_blank" href="https://material-ui.com/">material-ui.</a>
+          </pre>
+        </div>
+      </div>
+      
+      <div className="ml-6 pt-1 col-span-2">
         <div className="mb-5 flex">
           <CustomTimePicker label="Alarm clock" />
           <CustomDatePicker label="Date" defaultValue={new Date(2020, 0, 1)} color="secondary" />
@@ -118,12 +132,6 @@ function App() {
           <p className="text-2xl">Positioned Snackbar</p>
           <SnackbarExample />
         </div>
-
-      </div>
-      <div className="ml-6 pt-1 col-span-1">
-        <h1 className="text-2xl text-blue-700 leading-tight text-center">
-          Tailwind and Create React App
-        </h1>
       </div>
 
       <div className="w-full flex flex-col md:flex-row justify-center items-start bg-gray-100 col-span-2">
